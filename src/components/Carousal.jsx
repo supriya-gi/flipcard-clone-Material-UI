@@ -1,15 +1,21 @@
 import React from "react";
-import Carousel from "react-material-ui-carousel";
-import Item from "./Item";
-import slider from "../../src/slider.json";
-function Carousal() {
-  return (
-    <Carousel>
-      {slider.map((item) => (
-        <Item key={item.id} item={item} />
-      ))}
-    </Carousel>
-  );
-}
+import Slider from "infinite-react-carousel";
 
-export default Carousal;
+import "./carousal.css";
+
+const Carousel = ({ images }) => {
+  return (
+    <section className="slider">
+      <Slider className="slider__content">
+        {images.map((image) => (
+          <div key={image.id} className="slider__content--item">
+            <img src={image.image} alt={image.title} />
+            <p className="slider-description">{image.title}</p>
+          </div>
+        ))}
+      </Slider>
+    </section>
+  );
+};
+
+export default Carousel;

@@ -180,7 +180,6 @@ function Header() {
           ) : (
             <div></div>
           )}
-
           <Box
             component="img"
             className="logo"
@@ -194,23 +193,20 @@ function Header() {
               marginLeft: { xs: 7, sm: 7 },
             }}
           />
-          <Search
-            style={{ backgroundColor: "white" }}
-            sx={{ display: { xs: "none", sm: "none", md: "block" } }}
-          >
-            <SearchIconWrapper>
-              <SearchIcon style={{ color: "#1976d2" }} />
-            </SearchIconWrapper>
-            <StyledInputBase
-              sx={{ display: { xs: "none", sm: "none", md: "block" } }}
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-              style={{ color: "gray", width: "350px" }}
-            />
-          </Search>
-          <ShoppingCartIcon
-            sx={{ ml: 2, display: { xs: "block", sm: "none", md: "none" } }}
+          <StyledInputBase
+            sx={{
+              display: { xs: "none", sm: "none", md: "block" },
+              margin: { md: 2 },
+            }}
+            placeholder="Search…"
+            inputProps={{ "aria-label": "search" }}
+            style={{ backgroundColor: "white", color: "gray", width: "350px" }}
           />
+          <SearchIconWrapper
+            sx={{ marginLeft: { xs: "none", sm: "none", md: 58, lg: 58 } }}
+          >
+            <SearchIcon style={{ color: "#1976d2" }} />
+          </SearchIconWrapper>
           <Tippy content={<Login />} interactive={true}>
             <Button
               sx={{ marginLeft: { xs: 2, sm: 2, md: 0 } }}
@@ -235,7 +231,6 @@ function Header() {
           <KeyboardArrowDownIcon
             sx={{ display: { xs: "none", sm: "none", md: "block" } }}
           />
-
           <ShoppingCartIcon
             sx={{ ml: 7, display: { xs: "none", sm: "block", md: "block" } }}
           />
@@ -253,14 +248,13 @@ function Header() {
             width: { xs: 300, sm: "none", md: "none" },
           }}
         >
-          <SearchIconWrapper>
-            <SearchIcon style={{ color: "#1976d2" }} />
-          </SearchIconWrapper>
           <StyledInputBase
             placeholder="Search…"
             inputProps={{ "aria-label": "search" }}
             style={{ color: "gray" }}
+            sx={{ marginTop: { xs: 1, sm: 1, md: "none" } }}
           />
+          <SearchIcon style={{ color: "#1976d2" }} />
         </Search>
       </AppBar>
 
