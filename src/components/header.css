@@ -1,0 +1,17 @@
+.tippy-box {
+    background-color: white !important;
+}
+
+.tippy-arrow {
+    color: white !important;
+}
+
+@media screen and(min-width:"320px")and(max-width:"556px") {
+    .css-t4hrbr {
+        margin-left: 2px !important;
+    }
+
+    .desk {
+        display: none;
+    }
+}
