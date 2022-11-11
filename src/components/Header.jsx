@@ -1,8 +1,10 @@
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBar, fabClasses, Toolbar, Typography } from "@mui/material";
 import "./header.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import StarPurple500Icon from "@mui/icons-material/StarPurple500";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import LensBlurIcon from "@mui/icons-material/LensBlur";
+import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import MovingIcon from "@mui/icons-material/Moving";
 import SearchIcon from "@mui/icons-material/Search";
@@ -20,6 +22,7 @@ import More from "./More";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
+import GTranslateIcon from "@mui/icons-material/GTranslate";
 import img1 from "../img/f15c02bfeb02d15d.webp";
 import img2 from "../img/29327f40e9c4d26b.webp";
 import img3 from "../img/22fddf3c7da4c4f4.webp";
@@ -36,7 +39,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { display } from "@mui/system";
 
 function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -150,6 +152,8 @@ function Header() {
                 aria-labelledby="demo-positioned-button"
                 anchorEl={anchorEl}
                 open={open}
+                className="menu"
+                sx={{ height: "100%" }}
                 onClose={handleClose}
                 anchorOrigin={{
                   vertical: "top",
@@ -160,20 +164,40 @@ function Header() {
                   horizontal: "left",
                 }}
               >
-                <MenuItem onClick={handleClose}>
-                  <PersonIcon /> Login & SignUp
+                <MenuItem
+                  onClick={handleClose}
+                  style={{
+                    background: "#1976d2",
+                    color: "#fff",
+                    marginTop: "-8px",
+                  }}
+                >
+                  <PersonIcon sx={{ paddingRight: 2 }} />
+                  Login and SignUp
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
-                  <MovingIcon />
+                  <MovingIcon sx={{ paddingRight: 2 }} />
                   SuperCoin Zone
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
-                  <StarPurple500Icon />
+                  <StarPurple500Icon sx={{ paddingRight: 2 }} />
                   Flipkard Plus Zone
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
-                  <DashboardIcon />
+                  <DashboardIcon sx={{ paddingRight: 2 }} />
                   All Categories
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <CardGiftcardIcon sx={{ paddingRight: 2 }} />
+                  Trending Stores
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <LensBlurIcon sx={{ paddingRight: 2 }} />
+                  More on Flipkart
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <GTranslateIcon sx={{ paddingRight: 2 }} />
+                  Choose Language
                 </MenuItem>
               </Menu>
             </>
@@ -189,8 +213,8 @@ function Header() {
           />
           <AddBoxIcon
             sx={{
-              display: { xs: "block", sm: "block", md: "none" },
-              marginLeft: { xs: 7, sm: 7 },
+              display: { xs: "block", sm: "none", md: "none" },
+              marginLeft: { xs: 3, sm: 3 },
             }}
           />
           <StyledInputBase
@@ -205,17 +229,34 @@ function Header() {
           <SearchIconWrapper
             sx={{ marginLeft: { xs: "none", sm: "none", md: 58, lg: 58 } }}
           >
-            <SearchIcon style={{ color: "#1976d2" }} />
+            <SearchIcon
+              style={{ color: "#1976d2" }}
+              sx={{ display: { xs: "none", sm: "none", md: "block" } }}
+            />
           </SearchIconWrapper>
+          <ShoppingCartIcon
+            sx={{
+              display: { xs: "block", sm: "none", md: "none" },
+              marginLeft: { xs: 2, sm: 2 },
+            }}
+          />
           <Tippy content={<Login />} interactive={true}>
             <Button
-              sx={{ marginLeft: { xs: 2, sm: 2, md: 0 } }}
+              sx={{
+                marginLeft: { xs: 2, sm: 2, md: 0 },
+                display: { xs: "none", sm: "block", md: "block" },
+              }}
               variant="contained"
               style={{ backgroundColor: "white", color: "#1976d2" }}
             >
               <b>Login</b>
             </Button>
           </Tippy>
+          <Typography
+            sx={{ ml: 3, display: { xs: "block", sm: "none", md: "none" } }}
+          >
+            Login
+          </Typography>
           <Typography
             sx={{ ml: 6, display: { xs: "none", sm: "block", md: "block" } }}
           >
@@ -248,19 +289,26 @@ function Header() {
             width: { xs: 300, sm: "none", md: "none" },
           }}
         >
+          <SearchIcon
+            className="search"
+            style={{ color: "gray" }}
+            sx={{ marginBottom: { xs: -1, sm: -1 }, marginLeft: { xs: -4 } }}
+          />
           <StyledInputBase
-            placeholder="Search…"
+            placeholder="Search for Products, Brands and More"
             inputProps={{ "aria-label": "search" }}
             style={{ color: "gray" }}
-            sx={{ marginTop: { xs: 1, sm: 1, md: "none" } }}
+            sx={{ marginLeft: { xs: -6 } }}
           />
-          <SearchIcon style={{ color: "#1976d2" }} />
         </Search>
       </AppBar>
 
       <ImageList cols={10}>
         {itemData.map((item) => (
-          <ImageListItem key={item.img}>
+          <ImageListItem
+            key={item.img}
+            sx={{ paddingLeft: { xs: 5, sm: 5, md: 0, lg: 0 } }}
+          >
             <img
               style={{ width: "100%", height: "100px" }}
               src={`${item.img}?w=164&h=164&fit=crop&auto=format`}

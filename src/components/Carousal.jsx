@@ -10,7 +10,6 @@ const Carousel = ({ images }) => {
         {images.map((image) => (
           <div key={image.id} className="slider__content--item">
             <img src={image.image} alt={image.title} />
-            <p className="slider-description">{image.title}</p>
           </div>
         ))}
       </Slider>
